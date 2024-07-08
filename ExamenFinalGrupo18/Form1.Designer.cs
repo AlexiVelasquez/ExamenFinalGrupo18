@@ -64,12 +64,15 @@
             // 
             // btn_ingreso
             // 
+            this.btn_ingreso.BackColor = System.Drawing.Color.MediumSpringGreen;
+            this.btn_ingreso.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ingreso.Location = new System.Drawing.Point(46, 66);
             this.btn_ingreso.Name = "btn_ingreso";
-            this.btn_ingreso.Size = new System.Drawing.Size(75, 23);
+            this.btn_ingreso.Size = new System.Drawing.Size(85, 29);
             this.btn_ingreso.TabIndex = 3;
             this.btn_ingreso.Text = "Ingresar";
-            this.btn_ingreso.UseVisualStyleBackColor = true;
+            this.btn_ingreso.UseVisualStyleBackColor = false;
+            this.btn_ingreso.Click += new System.EventHandler(this.btn_ingreso_Click);
             // 
             // Form1
             // 
