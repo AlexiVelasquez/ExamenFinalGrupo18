@@ -31,10 +31,10 @@ namespace ExamenFinalGrupo18
             public int Puntos_Grupo18 { get; set; }
             public string Resultado_Grupo18 => G_o_P_Grupo18 ? "Ganado" : "Perdido";
             //Asignamos atributos con variable llamando al constructor...
-            public EF_Grupo18(string nombre_Grupo18, string fecha_Grupo18, bool g_o_p_Grupo18, int puntos_Grupo18)
+            public EF_Grupo18(string nombre_Grupo18, string sfecha_Grupo18, bool g_o_p_Grupo18, int puntos_Grupo18)
             {
                 Nombre_Grupo18 = nombre_Grupo18;
-                Fecha_Grupo18 = fecha_Grupo18;
+                Fecha_Grupo18 = sfecha_Grupo18;
                 G_o_P_Grupo18 = g_o_p_Grupo18;
                 Puntos_Grupo18 = puntos_Grupo18;
             }
@@ -68,15 +68,48 @@ namespace ExamenFinalGrupo18
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            
+            try
+            {
+                string nombreJuego_Grupo18 = textBox2.Text.Trim();
+                bool ganado_Grupo18 = rbtnGano.Checked;
+                string sfecha_Grupo18 = DateTime.Now.ToString("dd/MM/yyyy");
+
+                //No permitir el ingreso de valores vacios
+                if (string.IsNullOrWhiteSpace(nombreJuego_Grupo18))
+                {
+                    throw new ArgumentException();
+                }
+                //Almacenamos los puntos
+                int puntos_Grupo18;
+                if (ganado_Grupo18 == true)
+                {
+                    puntos_Grupo18 = 100;
+                }
+                else
+                {
+                    puntos_Grupo18 = -20;
+                }
+                totalPuntos_Grupo18 += puntos_Grupo18;
+
+                //Ingresamos los parametros correspondientes...
+                EF_Grupo18 eF_Grupo18 = new EF_Grupo18(nombreJuego_Grupo18, sfecha_Grupo18, ganado_Grupo18, puntos_Grupo18);
+
+                // Guardamos los datos en el texto que elegimos ...
+                GuardarRegistro(eF_Grupo18);
+
+                //Registramos los datos en DateGriedView
+                dgvRegistroVideojuego.Rows.Add(eF_Grupo18.Nombre_Grupo18, eF_Grupo18.Fecha_Grupo18, eF_Grupo18.Resultado_Grupo18, eF_Grupo18.Puntos_Grupo18);
+
+            }
+            catch { }
         }
-        private void GuardarRegistro(EF_Grupo18 EF_Grupo18)
+        private void GuardarRegistro(EF_Grupo18 eF_Grupo18)
         { 
             try
             {
                 using (StreamWriter esc_Grupo18 = new StreamWriter(FiloPath, true))
                 {
-                    esc_Grupo18.WriteLine(EF_Grupo18.ToString());
+                    esc_Grupo18.WriteLine(eF_Grupo18.ToString());
                 }
             }
             catch (Exception ex)
@@ -103,12 +136,17 @@ namespace ExamenFinalGrupo18
                         string[] p_Grupo18 = l_Grupo18.Split('.');
                         if (p_Grupo18.Length == 4)
                         {
-                            string videoJuego_Grupo18 = p_Grupo18[0];
-                            string fecha_Grupo18 = p_Grupo18[1];
+                            string nombreJuego_Grupo18 = p_Grupo18[0];
+                            string sfecha_Grupo18 = p_Grupo18[1];
                             bool ganado_Grupo18 = bool.Parse(p_Grupo18[2]);
                             int puntos_Grupo18 = int.Parse(p_Grupo18[3]);
 
-                            
+                            //Para recuperar los datos, creamos un objeto de la clase
+                            EF_Grupo18 eF_Grupo18 = new EF_Grupo18(nombreJuego_Grupo18, sfecha_Grupo18, ganado_Grupo18, puntos_Grupo18);
+                            // Vemos los datos de DateGriedView
+                            dgvRegistroVideojuego.Rows.Add(eF_Grupo18.Nombre_Grupo18, eF_Grupo18.Fecha_Grupo18, eF_Grupo18.Resultado_Grupo18, eF_Grupo18.Puntos_Grupo18);
+                            // Cargamos el total de puntos
+                            totalPuntos_Grupo18 += puntos_Grupo18;
                         }
                     }
                     // Vemos los puntos totales...
@@ -119,10 +157,6 @@ namespace ExamenFinalGrupo18
                   MessageBox.Show("Se detectó un error en los datos cargados, " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-        }
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void EliminarDatos(string nombreJuego_Grupo18)
@@ -148,5 +182,20 @@ namespace ExamenFinalGrupo18
             }
         }
 
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void buttonSalir_Click(object sender, EventArgs e)
+        {
+            Close();    
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

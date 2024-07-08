@@ -37,11 +37,12 @@
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonSalir = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dgvRegistroVideojuego = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRegistroVideojuego)).BeginInit();
             this.SuspendLayout();
             // 
             // rbtnGano
@@ -125,25 +126,16 @@
             this.textBox2.Size = new System.Drawing.Size(187, 20);
             this.textBox2.TabIndex = 8;
             // 
-            // button1
+            // buttonSalir
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button1.Location = new System.Drawing.Point(301, 193);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(83, 27);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Quitar";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button2.Location = new System.Drawing.Point(419, 193);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(83, 27);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Salir";
-            this.button2.UseVisualStyleBackColor = false;
+            this.buttonSalir.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.buttonSalir.Location = new System.Drawing.Point(419, 193);
+            this.buttonSalir.Name = "buttonSalir";
+            this.buttonSalir.Size = new System.Drawing.Size(83, 27);
+            this.buttonSalir.TabIndex = 10;
+            this.buttonSalir.Text = "Salir";
+            this.buttonSalir.UseVisualStyleBackColor = false;
+            this.buttonSalir.Click += new System.EventHandler(this.buttonSalir_Click);
             // 
             // label2
             // 
@@ -157,12 +149,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dgvRegistroVideojuego);
             this.groupBox1.Controls.Add(this.btnRegistrar);
             this.groupBox1.Controls.Add(this.rbtnPerdió);
-            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.buttonSalir);
             this.groupBox1.Controls.Add(this.rbtnGano);
             this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.lblPuntosTotales);
             this.groupBox1.Controls.Add(this.label2);
@@ -175,6 +167,16 @@
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registro de videojuegos";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // dgvRegistroVideojuego
+            // 
+            this.dgvRegistroVideojuego.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRegistroVideojuego.Location = new System.Drawing.Point(17, 257);
+            this.dgvRegistroVideojuego.Name = "dgvRegistroVideojuego";
+            this.dgvRegistroVideojuego.Size = new System.Drawing.Size(240, 150);
+            this.dgvRegistroVideojuego.TabIndex = 13;
+            this.dgvRegistroVideojuego.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
             // Form2
             // 
@@ -188,6 +190,7 @@
             this.Load += new System.EventHandler(this.Form2_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRegistroVideojuego)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -202,9 +205,9 @@
         private System.Windows.Forms.Button btnRegistrar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonSalir;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridView dgvRegistroVideojuego;
     }
 }
