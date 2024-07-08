@@ -8,6 +8,7 @@ namespace ExamenFinalGrupo18
 {
     internal static class Program
     {
+        
         /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>
