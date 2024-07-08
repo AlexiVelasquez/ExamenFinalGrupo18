@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C5F22B2B-9C2C-4059-815D-7E87AAEABCE1}</ProjectGuid>
+    <ProjectGuid>{6237339C-3FF8-47FB-A7A7-B69199390129}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ExamenFinalGrupo18</RootNamespace>
-    <AssemblyName>ExamenFinalGrupo18</AssemblyName>
+    <RootNamespace>Enunciado2</RootNamespace>
+    <AssemblyName>Enunciado2</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
